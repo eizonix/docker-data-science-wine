@@ -1,0 +1,25 @@
+version: '3'
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile #отсюда берет насройки
+    volumes:
+      - .:/home/jovyan/ #слева наш комп справа докер
+    ports:
+        - '8888:8888' #слева наш комп справа докер
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports: 
+      - '5432:8888'
+volumes:
+  pgdata:
+    
+
+
+    
